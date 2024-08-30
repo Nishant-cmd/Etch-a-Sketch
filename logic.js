@@ -14,6 +14,7 @@ for (let row = 1; row <= 10; row++) {
 const allDiv = document.querySelectorAll(".coloum");
 const startButton = document.querySelector("#Start");
 const eraseButton = document.querySelector("#Erase");
+const rainbowButton = document.querySelector("#Rainbow");
 const gridButton = document.querySelector("#Grid-size");
 
 function paint() {
@@ -62,4 +63,33 @@ gridButton.addEventListener("click", () => {
     }
     containerDiv.appendChild(rowDiv);
   }
+});
+
+const hexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
+
+function getCharacter(index) {
+  return hexCharacters[index];
+}
+
+function generateNewColor() {
+  let hexColorRep = "#";
+
+  for (let index = 0; index < 6; index++) {
+    const randomPosition = Math.floor(Math.random() * hexCharacters.length);
+    hexColorRep += getCharacter(randomPosition);
+  }
+
+  return hexColorRep;
+}
+
+function rainbow() {
+  allDiv.forEach((div) => {
+    div.addEventListener("mouseover", () => {
+      const color = generateNewColor();
+      div.style.backgroundColor = color;
+    });
+  });
+}
+rainbowButton.addEventListener("click", () => {
+  rainbow();
 });
