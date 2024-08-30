@@ -11,7 +11,7 @@ for (let row = 1; row <= 10; row++) {
   containerDiv.appendChild(rowDiv);
 }
 
-const allDiv = document.querySelectorAll(".coloum");
+let allDiv = document.querySelectorAll(".coloum");
 const startButton = document.querySelector("#Start");
 const eraseButton = document.querySelector("#Erase");
 const rainbowButton = document.querySelector("#Rainbow");
@@ -63,6 +63,7 @@ gridButton.addEventListener("click", () => {
     }
     containerDiv.appendChild(rowDiv);
   }
+  allDiv=document.querySelectorAll(".coloum");
 });
 
 const hexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
